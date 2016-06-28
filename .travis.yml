@@ -17,7 +17,7 @@ before_install:
     - ./scripts/install-dependencies.rb
 
 script:
-    - ./gradlew clean assemble publishToMavenLocal test
+    - ./gradlew clean assemble publishToMavenLocal test --info
 
 after_success:
 #    - ./scripts/deploy-snapshot.sh
