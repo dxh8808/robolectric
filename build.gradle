@@ -102,7 +102,7 @@ configure(subprojects.findAll { project -> project.name =~ subshadowRE }) {
         outputs.dir file("${buildDir}/resources/main")
 
         println "configurations.runtime == ${configurations.runtime.metaClass}"
-        configurations.runtime.forEach { file ->
+        configurations.runtime.files.forEach { File file ->
             println "RUNTIME ARTIFACTS $file"
             def nativeJarMatch = file.name =~ /lib.*-natives-(.*)\.jar/
             if (nativeJarMatch) {
