@@ -99,9 +99,11 @@ configure(subprojects.findAll { project -> project.name =~ subshadowRE }) {
     }
 
     task copyNatives(type: Copy) {
-        outputs.dir file("${project.buildDir}/resources/main")
+        outputs.dir file("${buildDir}/resources/main")
 
-        project.configurations.runtime.forEach { File file ->
+        println "configurations.runtime == ${configurations.runtime.metaClass}"
+        configurations.runtime.forEach { file ->
+            println "RUNTIME ARTIFACTS $file"
             def nativeJarMatch = file.name =~ /lib.*-natives-(.*)\.jar/
             if (nativeJarMatch) {
                 inputs.file file
@@ -110,7 +112,7 @@ configure(subprojects.findAll { project -> project.name =~ subshadowRE }) {
                 from(zipTree(file)) { rename { f -> "$platformName/$f" } }
             }
 
-            into project.file("${project.buildDir}/resources/main")
+            into project.file("$buildDir/resources/main")
         }
     }
 
