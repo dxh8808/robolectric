@@ -24,6 +24,13 @@ allprojects {
             }
         }
     }
+
+    test {
+        testLogging {
+            events "failed"
+            exceptionFormat "short"
+        }
+    }
 }
 
 def subshadowRE = /robolectric-shadows\/shadows-core\/v(.*)$/
