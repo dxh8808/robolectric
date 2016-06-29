@@ -29,7 +29,16 @@ allprojects {
         testLogging {
             events "failed"
             exceptionFormat "short"
+
+            info {
+                events "started", "skipped", "failed"
+                exceptionFormat "full"
+            }
         }
+
+        minHeapSize = "1024m"
+        maxHeapSize = "2048m"
+        jvmArgs '-XX:MaxPermSize=1024m'
     }
 }
 

@@ -18,7 +18,7 @@ before_install:
 
 script:
     - ./gradlew clean assemble publishToMavenLocal compileTest --info --stacktrace
-    - ./gradlew test --debug --stacktrace
+    - ./gradlew test --info --stacktrace
 
 after_success:
 #    - ./scripts/deploy-snapshot.sh
