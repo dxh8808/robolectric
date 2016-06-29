@@ -115,7 +115,7 @@ configure(subprojects.findAll { project -> project.name =~ subshadowRE }) {
             if (nativeJarMatch) {
                 inputs.file file
 
-                def platformName = match[0][1]
+                def platformName = nativeJarMatch[0][1]
                 from(zipTree(file)) { rename { f -> "$platformName/$f" } }
             }
 
