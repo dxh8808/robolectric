@@ -26,6 +26,7 @@ allprojects {
     }
 
     test {
+        exclude "**/*\$*" // otherwise gradle runs static inner classes like TestRunnerSequenceTest$SimpleTest
         testLogging {
             events "failed"
             exceptionFormat "short"
